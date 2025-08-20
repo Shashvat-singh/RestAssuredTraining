@@ -3,6 +3,10 @@ package A01.Basic;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
@@ -27,13 +31,22 @@ then()
 
 public class HTTPRequest {
 
-	int id;
+	String userID;
 
 	@Test(priority = 1)
 	void getUsers() {
 
 		when().get("https://reqres.in/api/users?page=2").then().statusCode(200).body("page", equalTo(2))
-				.body("total_pages", equalTo(2)).log().all();
+				.body("total_pages", equalTo(2)).headers("Connection", "keep-alive").and()
+				.headers("Content-Type", "application/json; charset=utf-8").headers("Content-Encoding", "gzip").log()
+				.all();
+
+//		Headers headers = res.getHeaders();
+//		
+//		for( Header H : headers) {
+//			System.out.println(H.getName()+ "  :  "+H.getValue());
+//		}
+
 	}
 
 	@Test(priority = 2)
@@ -43,42 +56,34 @@ public class HTTPRequest {
 		data.put("age", "21");
 		data.put("grade", "A+");
 
+		Response res = given().contentType("application/json").body(data)
+
+				.when().headers("x-api-key", "reqres-free-v1").post("https://reqres.in/api/users").then()
+				.statusCode(201).body("name", equalTo("DemoName")).log().all().extract().response();
+
+		String userID = res.jsonPath().getString("id");
+	}
+
+	@Test(priority = 3, dependsOnMethods = "postUserDetail")
+	void updateUserDetails() {
+		HashMap data = new HashMap();
+		data.put("Name", "Shashvat");
+		data.put("Address", "Sec-62, Noida, UP");
+
 		given().contentType("application/json").body(data)
 
-				.when()
-				// .headers("x-api-key","reqres-free-v1")
-				.post("http://localhost:3000/student").then().statusCode(201).body("name", equalTo("DemoName")).log()
-				.all();
+				.when().header("x-api-key", "reqres-free-v1").put("https://reqres.in/api/users/" + userID)
+
+				.then().statusCode(200).body("Name", equalTo("Shashvat")).log().all();
+
 	}
 
-	@Test(priority = 3)
-	void postReqAndUpdateThroUpdateUser() {
-		HashMap data01 = new HashMap();
-		data01.put("Name", "Shashvat");
-		data01.put("Address", "Sec-62, Noida, UP");
-
-		id = given().contentType("application/json").body(data01)
-
-				.when().header("x-api-key", "reqres-free-v1").post("https://reqres.in/api/users").jsonPath()
-				.getInt("id");
-	}
-
-	@Test(priority = 4, dependsOnMethods = "postReqAndUpdateThroUpdateUser")
-	void updateUser() {
-		HashMap data02 = new HashMap();
-		data02.put("Name", "Shashvat");
-		data02.put("Address", "Samneghat, Lanka, Varanasi, UP");
-
-		given().contentType("application/json").body(data02).when().header("x-api-key", "reqres-free-v1")
-				.put("https://reqres.in/api/users/" + id).then().statusCode(201).log().all();
-	}
-
-	@Test
+	@Test(priority = 4, dependsOnMethods = "postUserDetail")
 	void deleteRequest() {
 
-		when()
-				// .header("x-api-key","reqres-free-v1")
-				.delete("http://localhost:3000/student/a356")
+		given().when()
+		.header("x-api-key", "reqres-free-v1")
+				.delete("https://reqres.in/api/users/" + userID)
 
 				.then().statusCode(204).log().all();
 	}

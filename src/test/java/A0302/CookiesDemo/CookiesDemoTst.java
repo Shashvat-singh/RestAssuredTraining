@@ -2,7 +2,9 @@ package A0302.CookiesDemo;
 
 import org.testng.annotations.Test;
 
+import io.restassured.http.Header;
 import io.restassured.http.Headers;
+import io.restassured.internal.NameAndValue;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.*;
@@ -23,10 +25,10 @@ public class CookiesDemoTst {
 //		System.out.println(cookies_value);
 
 		// For getting Key value of cookies
-		Map<String, String> cookies_values = res.getCookies();
+		Map<String, String> cookies_key_values = res.getCookies();
 //		System.out.println(cookies_values.keySet()); //For Key of Cookie
-
-		for (String k : cookies_values.keySet()) {
+		
+		for (String k : cookies_key_values.keySet()) {
 			String cookie_value = res.getCookie(k);
 			System.out.println(k + ">>>>has value>>>>" + cookie_value);
 		}
@@ -34,9 +36,14 @@ public class CookiesDemoTst {
 
 	@Test
 	void testServer() {
-		Response res = given().when().get("https://www.google.co.in");
-		res.getHeaders().forEach(header -> System.out.println(header.getName() + " : " + header.getValue()));
-
+		Response res = given().when().get("https://reqres.in/api/users");
+		// res.getHeaders().forEach(header -> System.out.println(header.getName() + " :
+		// " + header.getValue()));
+		
+		
+		for (Header header : res.getHeaders()) {
+			System.out.println(header.getName() + "   :   " + header.getValue());
+		}
 	}
 
 }
