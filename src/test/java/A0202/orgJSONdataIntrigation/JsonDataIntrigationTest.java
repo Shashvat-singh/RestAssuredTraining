@@ -24,14 +24,10 @@ public class JsonDataIntrigationTest {
 		data.put("subjects", subjects);
 
 		Response response = given().contentType("application/json").body(data.toString())
-
-				.when().post("http://localhost:3000/students")
-
-				.then().statusCode(201).body("name", equalTo("Shaurya")).body("age", equalTo("23"))
-				.body("grade", equalTo("A+")).body("subjects[0]", equalTo("Math"))
-				.body("subjects[1]", equalTo("Science")).body("subjects[2]", equalTo("Geography")).log().all().extract()
-				.response();
-
+		.when().post("http://localhost:3000/students")
+		.then().statusCode(201).body("name", equalTo("Shaurya")).body("age", equalTo("23"))
+		.body("grade", equalTo("A+")).body("subjects[0]", equalTo("Math"))
+		.body("subjects[1]", equalTo("Science")).body("subjects[2]", equalTo("Geography")).log().all().extract().response();
 		userID01 = response.jsonPath().getString("id");
 	}
 
@@ -46,16 +42,13 @@ public class JsonDataIntrigationTest {
 		data.put("subjects", subjects);
 
 		given().contentType("application/json").body(data.toString())
-
-				.when().put("http://localhost:3000/students/" + userID01)
-
-				.then().statusCode(200).body("name", equalTo("UpdatedName")).log().all();
+		.when().put("http://localhost:3000/students/" + userID01)
+		.then().statusCode(200).body("name", equalTo("UpdatedName")).log().all();
 	}
 
 	@Test(priority = 3, dependsOnMethods = "getDataJsonPOST")
 	void removeDataJsonDELETE() {
 		when().delete("http://localhost:3000/students/" + userID01)
-
-				.then().statusCode(200).log().all();
+		.then().statusCode(200).log().all();
 	}
 }

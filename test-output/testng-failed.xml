@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="A01.Basic.HTTPRequest">
+      <class name="A0302.Cookies_Header_Demo.CookiesHeaderDemoTst">
         <methods>
-          <include name="deleteRequest"/>
-          <include name="postUserDetail"/>
+          <include name="testServer"/>
         </methods>
-      </class> <!-- A01.Basic.HTTPRequest -->
+      </class> <!-- A0302.Cookies_Header_Demo.CookiesHeaderDemoTst -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

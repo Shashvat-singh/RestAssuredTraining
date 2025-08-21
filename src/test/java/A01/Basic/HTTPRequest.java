@@ -67,25 +67,21 @@ public class HTTPRequest {
 	@Test(priority = 3, dependsOnMethods = "postUserDetail")
 	void updateUserDetails() {
 		HashMap data = new HashMap();
+		
 		data.put("Name", "Shashvat");
 		data.put("Address", "Sec-62, Noida, UP");
 
 		given().contentType("application/json").body(data)
-
-				.when().header("x-api-key", "reqres-free-v1").put("https://reqres.in/api/users/" + userID)
-
-				.then().statusCode(200).body("Name", equalTo("Shashvat")).log().all();
+		.when().header("x-api-key", "reqres-free-v1").put("https://reqres.in/api/users/" + userID)
+		.then().statusCode(200).body("Name", equalTo("Shashvat")).log().all();
 
 	}
 
 	@Test(priority = 4, dependsOnMethods = "postUserDetail")
 	void deleteRequest() {
-
-		given().when()
-		.header("x-api-key", "reqres-free-v1")
-				.delete("https://reqres.in/api/users/" + userID)
-
-				.then().statusCode(204).log().all();
+		given()
+		.when().header("x-api-key", "reqres-free-v1").delete("https://reqres.in/api/users/" + userID)
+		.then().statusCode(204).log().all();
 	}
 
 }

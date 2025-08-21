@@ -1,4 +1,4 @@
-package A0302.CookiesDemo;
+package A0302.Cookies_Header_Demo;
 
 import org.testng.annotations.Test;
 
@@ -13,10 +13,10 @@ import static org.hamcrest.Matchers.*;
 
 import java.util.Map;
 
-public class CookiesDemoTst {
+public class CookiesHeaderDemoTest {
 
 	@Test
-	void testCookies() {
+	void getCookiesListTest() {
 
 		Response res = given().when().get("https://www.google.com/");
 
@@ -27,23 +27,13 @@ public class CookiesDemoTst {
 		// For getting Key value of cookies
 		Map<String, String> cookies_key_values = res.getCookies();
 //		System.out.println(cookies_values.keySet()); //For Key of Cookie
-		
+		System.out.println("Cookies List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
 		for (String k : cookies_key_values.keySet()) {
 			String cookie_value = res.getCookie(k);
 			System.out.println(k + ">>>>has value>>>>" + cookie_value);
 		}
 	}
 
-	@Test
-	void testServer() {
-		Response res = given().when().get("https://reqres.in/api/users");
-		// res.getHeaders().forEach(header -> System.out.println(header.getName() + " :
-		// " + header.getValue()));
-		
-		
-		for (Header header : res.getHeaders()) {
-			System.out.println(header.getName() + "   :   " + header.getValue());
-		}
-	}
+	
 
 }
