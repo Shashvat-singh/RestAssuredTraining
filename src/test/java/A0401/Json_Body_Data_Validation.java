@@ -10,7 +10,9 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
+import io.restassured.http.Cookies;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
@@ -33,42 +35,50 @@ public class Json_Body_Data_Validation {
 		// apply loop and conditions.) :----
 		Response res = given().contentType("contentType.json").when().get("http://localhost:3000/store");
 
-		System.out.println("Here is the headers list :::::-----");
-		Headers headers = res.getHeaders();
-		for (Header h : headers) {
-			System.out.println(h.getName() + " : " + h.getValue());
-		}
-
-		System.out.println("Here is the cookies list :::::-----");
-		Map<String, String> cookiesGet = res.cookies();
-		for (String k : cookiesGet.keySet()) {
-			String cookies_Value = res.getCookie(k);
-			System.out.println(k + " : " + cookies_Value);
-		}
-
 		Assert.assertEquals(res.statusCode(), 200);
-		Assert.assertEquals(res.header("content-Type"), "application/json");
+		Assert.assertEquals(res.header("content-Type"), "application/jsn");
 
 		String book0Name = res.jsonPath().get("book[0].title").toString();
 		Assert.assertEquals(book0Name, "Sayings of the Century");
 
 		String book1Name = res.jsonPath().get("book[1].title").toString();
 		Assert.assertEquals(book1Name, "Sword of Honour");
-
+		
 		String book4Name = res.jsonPath().get("book[4].title").toString();
 		Assert.assertEquals(book4Name, "To Kill a Mockingbird");
+		
 	}
 
 	@Test
 	void jsonObjectDataValidation() {
+		
 		Response res = given().contentType("application/json").when().get("http://localhost:3000/store");
-
-		JSONObject jo = new JSONObject(res.asString());
-
-		for (int i = 0; i < jo.getJSONArray("book").length(); i++) {
-			String bookTitle = jo.getJSONArray("book").getJSONObject(i).get("title").toString();
-			System.out.println(bookTitle);
+		
+		System.out.println("Header List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
+		Headers hds = res.getHeaders();
+		for(Header h : hds) {
+			System.out.println(h.getName() + " : "+ h.getValue());
 		}
+		
+		System.out.println("Cookies List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
+		Map<String, String> coo = res.getCookies();
+		for(String k : coo.keySet()) {
+			String cookie = res.getCookie(k);
+			System.out.println(k + " : "+ cookie);
+		}
+		
+		System.out.println("Book- Title List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
+		JSONObject jo = new JSONObject(res.asString());
+		for(int i=0; i<jo.getJSONArray("book").length(); i++) {
+			String bookTitle = jo.getJSONArray("book").getJSONObject(i).get("title").toString();
+		    int bookPrice = jo.getJSONArray("book").getJSONObject(i).getInt("price");
+			System.out.println(bookTitle+" : "+(bookPrice));
+		}
+		
+		
+		
 	}
+	
+	
 
 }
