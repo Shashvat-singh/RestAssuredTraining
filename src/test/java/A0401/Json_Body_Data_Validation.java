@@ -2,6 +2,7 @@ package A0401;
 
 import static io.restassured.RestAssured.*;
 
+
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -33,19 +34,19 @@ public class Json_Body_Data_Validation {
 
 		// Approach 2(Preferred way of approach for validation using this style we can
 		// apply loop and conditions.) :----
-		Response res = given().contentType("contentType.json").when().get("http://localhost:3000/store");
+		Response res = given().contentType("application/json").when().get("http://localhost:3000/store");
 
 		Assert.assertEquals(res.statusCode(), 200);
-		Assert.assertEquals(res.header("content-Type"), "application/jsn");
-
+		Assert.assertEquals(res.header("content-Type"), "application/json");
+		
 		String book0Name = res.jsonPath().get("book[0].title").toString();
 		Assert.assertEquals(book0Name, "Sayings of the Century");
-
+		
 		String book1Name = res.jsonPath().get("book[1].title").toString();
 		Assert.assertEquals(book1Name, "Sword of Honour");
 		
-		String book4Name = res.jsonPath().get("book[4].title").toString();
-		Assert.assertEquals(book4Name, "To Kill a Mockingbird");
+		String book4Name = res.jsonPath().get("book[2].title").toString();
+		Assert.assertEquals(book4Name, "1984");
 		
 	}
 
@@ -54,27 +55,26 @@ public class Json_Body_Data_Validation {
 		
 		Response res = given().contentType("application/json").when().get("http://localhost:3000/store");
 		
-		System.out.println("Header List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
-		Headers hds = res.getHeaders();
-		for(Header h : hds) {
+		System.out.println("Header List are :: >>>>>>>>>>>>>>>>>>>");
+		Headers hd = res.getHeaders();
+		for(Header h : hd) {
 			System.out.println(h.getName() + " : "+ h.getValue());
 		}
+	 
 		
-		System.out.println("Cookies List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
-		Map<String, String> coo = res.getCookies();
-		for(String k : coo.keySet()) {
-			String cookie = res.getCookie(k);
-			System.out.println(k + " : "+ cookie);
+		System.out.println("Cookies List are :: >>>>>>>>>>>>>>>>>>");
+		Map<String, String> coos = res.getCookies();
+		for(String k : coos.keySet()) {
+			System.out.println(k +" : "+ res.getCookie(k));
 		}
 		
-		System.out.println("Book- Title List are ::::::::>>>>>>>>>>>>>>>>>>>>>>");
+		
+		System.out.println("Book-Title List are :: >>>>>>>>>>>>>>>>");
 		JSONObject jo = new JSONObject(res.asString());
-		for(int i=0; i<jo.getJSONArray("book").length(); i++) {
+		for(int i=0; i < jo.getJSONArray("book").length(); i++) {
 			String bookTitle = jo.getJSONArray("book").getJSONObject(i).get("title").toString();
-		    int bookPrice = jo.getJSONArray("book").getJSONObject(i).getInt("price");
-			System.out.println(bookTitle+" : "+(bookPrice));
+			System.out.println(bookTitle);
 		}
-		
 		
 		
 	}

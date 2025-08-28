@@ -2,6 +2,7 @@ package A0302.Cookies_Header_Demo;
 
 import static io.restassured.RestAssured.*;
 
+
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -18,7 +19,6 @@ public class getSingleHeaderDemoTest {
 		Response res = given().when().get("https://reqres.in/api/users").then().statusCode(200)
 				.header("Content-Type", "application/json; charset=utf-8").and().header("Transfer-Encoding", "chunked")
 				.and().header("Content-Encoding", "gzip").log().all().extract().response();
-
 	}
 
 	@Test
