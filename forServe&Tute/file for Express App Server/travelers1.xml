@@ -1,0 +1,50 @@
+<TravelerInformationResponse xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <page>1</page>
+    <per_page>06</per_page>
+    <totalrecords>12</totalrecords>
+    <total_pages>02</total_pages>
+    <travelers>
+        <Travelerinformation>
+            <id>00001</id>
+            <name>Vidyabharthi Reddy</name>
+            <email>vidyabharthi95@gmail.com</email>
+            <address>USA</address>
+            <createdat>2021-02-22T05:46:31.1987091</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00002</id>
+            <name>Vinod Sharma</name>
+            <email>anu123sharma@gmail.com</email>
+            <address>USA</address>
+            <createdat>2021-02-22T07:55:38.0860664</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00003</id>
+            <name>Marco Ordonez</name>
+            <email>marco.ordonez@outlook.com.pe</email>
+            <address>USA</address>
+            <createdat>2021-02-22T08:50:51.8127434</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00004</id>
+            <name>Dheeraj Thonu Rawat</name>
+            <email>715052349972569</email>
+            <address>USA</address>
+            <createdat>2021-02-22T10:55:55.8598982</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00005</id>
+            <name>Anand Jha</name>
+            <email>anand.jolakkadengalil.com</email>
+            <address>USA</address>
+            <createdat>2021-02-22T11:43:41.6256852</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00006</id>
+            <name>Lennart Richard</name>
+            <email>lennart.richard@gmail.com</email>
+            <address>USA</address>
+            <createdat>2021-02-22T17:02:00.8267685</createdat>
+        </Travelerinformation>
+    </travelers>
+</TravelerInformationResponse>

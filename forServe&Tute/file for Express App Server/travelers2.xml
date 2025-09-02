@@ -1,0 +1,50 @@
+<TravelerInformationResponse xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <page>2</page>
+    <per_page>06</per_page>
+    <totalrecords>12</totalrecords>
+    <total_pages>02</total_pages>
+    <travelers>
+        <Travelerinformation>
+            <id>00007</id>
+            <name>Amit Verma</name>
+            <email>amit.verma@example.com</email>
+            <address>India</address>
+            <createdat>2021-02-22T18:05:42.1234567</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00008</id>
+            <name>Sarah Johnson</name>
+            <email>sarah.johnson@example.com</email>
+            <address>USA</address>
+            <createdat>2021-02-22T18:15:55.9876543</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00009</id>
+            <name>Michael Brown</name>
+            <email>michael.brown@example.com</email>
+            <address>Canada</address>
+            <createdat>2021-02-22T18:22:11.7654321</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00010</id>
+            <name>Priya Sharma</name>
+            <email>priya.sharma@example.com</email>
+            <address>India</address>
+            <createdat>2021-02-22T18:30:22.4567890</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00011</id>
+            <name>Carlos Martinez</name>
+            <email>carlos.martinez@example.com</email>
+            <address>Mexico</address>
+            <createdat>2021-02-22T18:35:10.2345678</createdat>
+        </Travelerinformation>
+        <Travelerinformation>
+            <id>00012</id>
+            <name>Anna Kowalski</name>
+            <email>anna.kowalski@example.com</email>
+            <address>Poland</address>
+            <createdat>2021-02-22T18:45:01.3456789</createdat>
+        </Travelerinformation>
+    </travelers>
+</TravelerInformationResponse>
