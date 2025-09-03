@@ -38,7 +38,7 @@ public class ParsingXMLResponse {
 		Assert.assertEquals(res.xmlPath().get("TravelerInformationResponse.page").toString(), "1");
 
 		Assert.assertEquals(
-				res.xmlPath().get("TravelerInformationResponse.travelers.Travelerinformation[1].name").toString(),
+				res.xmlPath().get("TravelerInformationResponse.trave lers.Travelerinformation[1].name").toString(),
 				"Vinod Sharma");
 
 	}
@@ -51,6 +51,26 @@ public class ParsingXMLResponse {
 		XmlPath xp = new XmlPath(res.asString());
 		List<Object> travellers = xp.getList("TravelerInformationResponse.travelers.Travelerinformation");
 		Assert.assertEquals(travellers.size(), 06);
+		
+		//verify traveller name is present
+		
 
+	}
+	@Test
+	void testXMLResponseBodyData() {
+		
+		Response res = given().when().get("http://localhost:3000/travelers?page=1").then().statusCode(200).extract().response();
+		
+		XmlPath xp = new XmlPath(res.asString());
+		List<String> traveller = xp.getList("TravelerInformationResponse.travelers.Travelerinformation.name");
+		
+//		for(String k : traveller) {
+//			System.out.println(k);
+//		}
+		
+		for(int i =0; i < traveller.size(); i++) {
+			System.out.println(traveller.get(i));
+		}
+		
 	}
 }

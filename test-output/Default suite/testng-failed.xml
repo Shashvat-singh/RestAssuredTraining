@@ -5,7 +5,7 @@
     <classes>
       <class name="A0501ParsingJSONResponseData.ParsingXMLResponse">
         <methods>
-          <include name="testXMLResponse"/>
+          <include name="testXMLResponseBodyData"/>
         </methods>
       </class> <!-- A0501ParsingJSONResponseData.ParsingXMLResponse -->
     </classes>
