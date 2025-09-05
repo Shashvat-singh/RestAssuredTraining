@@ -1,6 +1,7 @@
 package A0501ParsingJSONResponseData;
 
 import static io.restassured.RestAssured.*;
+
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -60,7 +61,7 @@ public class ParsingXMLResponse {
 	void testXMLResponseBodyData() {
 		
 		Response res = given().when().get("http://localhost:3000/travelers?page=1").then().statusCode(200).extract().response();
-		
+		 
 		XmlPath xp = new XmlPath(res.asString());
 		List<String> traveller = xp.getList("TravelerInformationResponse.travelers.Travelerinformation.name");
 		
