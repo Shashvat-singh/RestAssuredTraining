@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="A0501ParsingJSONResponseData.ParsingXMLResponse">
+      <class name="A0601.Practice">
         <methods>
-          <include name="testXMLResponseBody"/>
+          <include name="getJSONObj"/>
         </methods>
-      </class> <!-- A0501ParsingJSONResponseData.ParsingXMLResponse -->
+      </class> <!-- A0601.Practice -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

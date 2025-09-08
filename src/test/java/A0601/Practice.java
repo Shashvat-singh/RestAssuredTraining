@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -25,16 +26,25 @@ import io.restassured.response.Response;
 public class Practice {
 	@Test
 	void getJSONObj() {
-		Response res = given().when().get("http://localhost:3000/students").then().statusCode(200).extract().response();
-	
-		JSONArray ja = new JSONArray(res.asString());
 		
-		System.out.println(ja.length());
+		File fe = new File("C:\\Users\\hds\\eclipse-workspace\\RestAssuredTraining\\src\\test\\resources\\uploadData\\sampleImage01.jpg");
 		
-		for(int i =0; i < ja.length(); i++) {
-			JSONObject jo = ja.getJSONObject(i);
-			System.out.println(jo.get("name").toString());
-		}
+		
+		Response res = given()
+				         .multiPart("file", fe)
+				         .header("x-api-key", "MY_SECRET_KEY_123")
+				       .when()
+				         .post("http://localhost:3000/upload")
+				       .then()
+				         .statusCode(201)
+				         .extract()
+				         .response();
+		
+		
+		
+		
+		
+		
 		
 	}
 	

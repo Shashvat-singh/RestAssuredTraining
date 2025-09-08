@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-05T18:41:01 IST" name="Default suite" finished-at="2025-09-05T18:41:04 IST" duration-ms="2668">
+  <suite started-at="2025-09-08T18:51:19 IST" name="Default suite" finished-at="2025-09-08T18:51:21 IST" duration-ms="1974">
     <groups>
     </groups>
-    <test started-at="2025-09-05T18:41:01 IST" name="Default test" finished-at="2025-09-05T18:41:04 IST" duration-ms="2668">
-      <class name="A0501ParsingJSONResponseData.ParsingXMLResponse">
-        <test-method signature="testXMLResponseBodyData()[pri:0, instance:A0501ParsingJSONResponseData.ParsingXMLResponse@399f45b1]" started-at="2025-09-05T18:41:01 IST" name="testXMLResponseBodyData" finished-at="2025-09-05T18:41:04 IST" duration-ms="2618" status="PASS">
+    <test started-at="2025-09-08T18:51:19 IST" name="Default test" finished-at="2025-09-08T18:51:21 IST" duration-ms="1974">
+      <class name="A0601.Practice">
+        <test-method signature="getJSONObj()[pri:0, instance:A0601.Practice@399f45b1]" started-at="2025-09-08T18:51:19 IST" name="getJSONObj" finished-at="2025-09-08T18:51:21 IST" duration-ms="1921" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testXMLResponseBodyData -->
-      </class> <!-- A0501ParsingJSONResponseData.ParsingXMLResponse -->
+        </test-method> <!-- getJSONObj -->
+      </class> <!-- A0601.Practice -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
