@@ -14,6 +14,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.json.XMLTokener;
 import org.testng.annotations.Test;
 
 import io.restassured.http.Cookies;
@@ -27,25 +28,10 @@ public class Practice {
 	@Test
 	void getJSONObj() {
 		
-		File fe = new File("C:\\Users\\hds\\eclipse-workspace\\RestAssuredTraining\\src\\test\\resources\\uploadData\\sampleImage01.jpg");
+		Response res = given().header("x-api-key", "MY_SECRET_KEY_123")
+				.when().get("http://localhost:3000/travelers?page=1").then().statusCode(200).extract().response();
 		
-		
-		Response res = given()
-				         .multiPart("file", fe)
-				         .header("x-api-key", "MY_SECRET_KEY_123")
-				       .when()
-				         .post("http://localhost:3000/upload")
-				       .then()
-				         .statusCode(201)
-				         .extract()
-				         .response();
-		
-		
-		
-		
-		
-		
-		
+		System.out.println(res.getHeader("content-type"));
 	}
 	
 }

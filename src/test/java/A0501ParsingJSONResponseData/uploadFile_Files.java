@@ -29,11 +29,12 @@ public class uploadFile_Files {
 				given()
 				   .multiPart("files", file01)
 				   .multiPart("files", file02)
+				   .header("x-api-key", "MY_SECRET_KEY_123")
 				   //.formParam("description", "This is a test upload")
 				.when()
 				   .post("http://localhost:3000/upload-multiple")
 				.then()
-				   .statusCode(200)
+				   .statusCode(201)
 				   .extract()
 				   .response();
 		

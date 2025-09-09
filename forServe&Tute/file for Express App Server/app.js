@@ -15,6 +15,11 @@ app.use(express.json()); // allow JSON input from client
 const API_KEY = "MY_SECRET_KEY_123";  // 👈 set your secret key
 
 function checkApiKey(req, res, next) {
+  // Allow GET requests without API key
+  if (req.method === "GET") {
+    return next();
+  }
+
   const clientKey = req.header("x-api-key");
   if (!clientKey || clientKey !== API_KEY) {
     return res.status(401).json({ error: "Unauthorized: Invalid or missing API key" });
