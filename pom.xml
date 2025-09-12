@@ -40,14 +40,16 @@
 			<version>8.3.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/com.github.java-json-tools/json-schema-validator -->
+
 		<dependency>
-			<groupId>com.github.java-json-tools</groupId>
+			<groupId>io.rest-assured</groupId>
 			<artifactId>json-schema-validator</artifactId>
-			<version>2.2.14</version>
+			<version>5.5.0</version> <!-- match your Rest Assured version -->
 			<scope>test</scope>
 		</dependency>
+
+
+
 	</dependencies>
 </project>
 

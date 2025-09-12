@@ -2,6 +2,7 @@ package A0501ParsingJSONResponseData;
 
 import static io.restassured.RestAssured.*;
 
+
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -41,7 +42,6 @@ public class ParsingXMLResponse {
 		Assert.assertEquals(
 				res.xmlPath().get("TravelerInformationResponse.trave lers.Travelerinformation[1].name").toString(),
 				"Vinod Sharma");
-
 	}
 
 	@Test
