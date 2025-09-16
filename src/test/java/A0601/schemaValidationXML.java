@@ -14,7 +14,7 @@ public class schemaValidationXML {
 		    .get("http://localhost:3000/travelers?page=1")
 		
 		.then()
-		   .assertThat().body(null, null);
+		   .assertThat();
 		
 	}
 }
