@@ -14,7 +14,7 @@
                 }
             },
             "required": [
-                "book"
+                "book" 
             ],
             "title": "Welcome4"
         },
