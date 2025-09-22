@@ -1,4 +1,4 @@
-package A0601;
+package A0601SchemaValidation;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;

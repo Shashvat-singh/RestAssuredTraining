@@ -2,6 +2,7 @@ package A0602SerializationDeserialization;
 
 import org.testng.annotations.Test;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,7 +52,7 @@ public class SerializationDeserialization {
 		System.out.println(sd.getAge());
 		System.out.println(sd.getGrade());
 		System.out.println(sd.getSubjects()[0]);
-		System.out.println(sd.getSubjects()[1]);
+		System.out.println(sd.getSubjects()[1]); 
 		System.out.println(sd.getSubjects()[2]);
 		
 	}

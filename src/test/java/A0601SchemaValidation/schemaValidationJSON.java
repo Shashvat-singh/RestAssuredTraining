@@ -1,4 +1,4 @@
-package A0601;
+package A0601SchemaValidation;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
