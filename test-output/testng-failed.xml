@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="A0702Authentication_Bearer.BearerAuthentication">
+      <class name="A0501ParsingJSONResponseData.ParsingXMLResponse">
         <methods>
-          <include name="testGETinOauth2"/>
+          <include name="testXMLResponseBody"/>
         </methods>
-      </class> <!-- A0702Authentication_Bearer.BearerAuthentication -->
+      </class> <!-- A0501ParsingJSONResponseData.ParsingXMLResponse -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

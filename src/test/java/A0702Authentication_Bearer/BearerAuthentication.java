@@ -2,6 +2,7 @@ package A0702Authentication_Bearer;
 
 
 import static io.restassured.RestAssured.*;
+
 import static org.hamcrest.Matchers.*;
 
 import org.testng.annotations.Test;
@@ -14,9 +15,10 @@ public class BearerAuthentication {
 		String bearerToken = "mySecretBearerToken";
 		
 		given()
+		      .pathParam("mypath", "api/bearer/emps")
 		      .header("Authorization", "Bearer "+bearerToken)
 		.when()
-		      .get("http://localhost:3000/api/bearer/emps")
+		      .get("http://localhost:3000/{mypath}")
 		 .then()  
 		      .statusCode(200)
 		      .log().all();

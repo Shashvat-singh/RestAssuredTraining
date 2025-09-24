@@ -1,4 +1,4 @@
-package A0401;
+package A0401ParsingJSON_ResponseData;
 
 import static io.restassured.RestAssured.*;
 
@@ -74,7 +74,7 @@ public class Json_Body_Data_Validation {
 		
 		
 		System.out.println("Book-Title List are :: >>>>>>>>>>>>>>>>");
-		JSONObject jo = new JSONObject(res.asString());
+		JSONObject jo = new JSONObject(res.asString()); 
 		for(int i=0; i < jo.getJSONArray("book").length(); i++) {
 			String bookTitle = jo.getJSONArray("book").getJSONObject(i).get("title").toString();
 			System.out.println(bookTitle);

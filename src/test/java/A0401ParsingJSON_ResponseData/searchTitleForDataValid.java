@@ -1,4 +1,4 @@
-package A0401;
+package A0401ParsingJSON_ResponseData;
 
 import static io.restassured.RestAssured.*;
 
